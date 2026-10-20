@@ -1,0 +1,16 @@
+{
+  "script": "Saving money starts with a clear budget. Track your expenses every week. Small habits build financial confidence.",
+  "voice": "en",
+  "aspect_ratios": [
+    "16:9"
+  ],
+  "style": "calm, modern, respectful footage",
+  "avoid": [
+    "realistic faces",
+    "invented logos"
+  ],
+  "captions": {
+    "burn_in": false,
+    "srt": true
+  }
+}

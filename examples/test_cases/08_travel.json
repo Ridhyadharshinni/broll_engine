@@ -1,0 +1,16 @@
+{
+  "script": "Travel gives people a chance to discover new places. Plan the route and keep essentials ready.",
+  "voice": "en",
+  "aspect_ratios": [
+    "16:9"
+  ],
+  "style": "calm, modern, respectful footage",
+  "avoid": [
+    "realistic faces",
+    "invented logos"
+  ],
+  "captions": {
+    "burn_in": false,
+    "srt": true
+  }
+}

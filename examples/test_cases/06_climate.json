@@ -1,0 +1,16 @@
+{
+  "script": "Solar panels convert sunlight into electricity. Wind turbines generate renewable energy.",
+  "voice": "en",
+  "aspect_ratios": [
+    "16:9"
+  ],
+  "style": "calm, modern, respectful footage",
+  "avoid": [
+    "realistic faces",
+    "invented logos"
+  ],
+  "captions": {
+    "burn_in": false,
+    "srt": true
+  }
+}

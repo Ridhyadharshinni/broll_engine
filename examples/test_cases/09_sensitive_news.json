@@ -1,0 +1,16 @@
+{
+  "script": "A difficult tragedy affected the community. Local groups are offering practical support to families.",
+  "voice": "en",
+  "aspect_ratios": [
+    "16:9"
+  ],
+  "style": "calm, modern, respectful footage",
+  "avoid": [
+    "realistic faces",
+    "invented logos"
+  ],
+  "captions": {
+    "burn_in": false,
+    "srt": true
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "script": "Cloud computing helps companies process data securely. Data centers support applications around the world.",
+  "voice": "en",
+  "aspect_ratios": [
+    "16:9"
+  ],
+  "style": "calm, modern, respectful footage",
+  "avoid": [
+    "realistic faces",
+    "invented logos"
+  ],
+  "captions": {
+    "burn_in": false,
+    "srt": true
+  }
+}

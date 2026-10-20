@@ -1,0 +1,16 @@
+{
+  "script": "This lightweight bottle fits in your bag. Reusable products can reduce single-use waste.",
+  "voice": "en",
+  "aspect_ratios": [
+    "9:16"
+  ],
+  "style": "calm, modern, respectful footage",
+  "avoid": [
+    "realistic faces",
+    "invented logos"
+  ],
+  "captions": {
+    "burn_in": false,
+    "srt": true
+  }
+}

@@ -1,0 +1,17 @@
+services:
+  broll-api:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      FOOTAGE_PROVIDER: ${FOOTAGE_PROVIDER:-mock}
+      PEXELS_API_KEY: ${PEXELS_API_KEY:-}
+      PIXABAY_API_KEY: ${PIXABAY_API_KEY:-}
+      CALLBACK_HMAC_SECRET: ${CALLBACK_HMAC_SECRET:-}
+      BROLL_DATA_DIR: /app/data
+      FFMPEG_PRESET: ${FFMPEG_PRESET:-veryfast}
+    volumes:
+      - broll-data:/app/data
+    restart: unless-stopped
+volumes:
+  broll-data:

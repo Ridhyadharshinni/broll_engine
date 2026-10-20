@@ -1,0 +1,16 @@
+{
+  "script": "The bank stores customer records. A computer mouse controls the pointer. Python can automate data analysis.",
+  "voice": "en",
+  "aspect_ratios": [
+    "16:9"
+  ],
+  "style": "calm, modern, respectful footage",
+  "avoid": [
+    "realistic faces",
+    "invented logos"
+  ],
+  "captions": {
+    "burn_in": false,
+    "srt": true
+  }
+}

@@ -1,0 +1,118 @@
+openapi: 3.1.0
+info:
+  title: Script-to-B-roll Video Engine
+  version: 0.1.0
+  description: Asynchronous script/audio to B-roll video generation API.
+servers:
+  - url: http://localhost:8000
+paths:
+  /health:
+    get:
+      summary: Liveness check
+      responses:
+        '200': { description: Service is alive }
+  /ready:
+    get:
+      summary: Readiness check
+      responses:
+        '200': { description: Readiness status }
+  /api/v1/broll/jobs:
+    post:
+      summary: Create a video generation job
+      parameters:
+        - in: header
+          name: Idempotency-Key
+          required: true
+          schema: { type: string, maxLength: 200 }
+        - in: header
+          name: X-Correlation-Id
+          required: false
+          schema: { type: string }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                audio_url: { type: [string, 'null'], format: uri }
+                script: { type: [string, 'null'] }
+                scenes:
+                  type: [array, 'null']
+                  items:
+                    type: object
+                    required: [text]
+                    properties:
+                      text: { type: string }
+                      visual_hint: { type: [string, 'null'] }
+                voice: { type: string, default: en }
+                aspect_ratios:
+                  type: array
+                  items: { type: string, enum: ['16:9','9:16','1:1'] }
+                style: { type: string }
+                avoid: { type: array, items: { type: string } }
+                captions:
+                  type: object
+                  properties:
+                    burn_in: { type: boolean }
+                    srt: { type: boolean }
+      responses:
+        '202':
+          description: Job queued or idempotent replay
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  job_id: { type: string }
+                  status: { type: string }
+                  progress: { type: integer }
+                  status_url: { type: string }
+        '400': { description: Invalid request or missing idempotency key }
+  /api/v1/broll/jobs/upload:
+    post:
+      summary: Create a job from an uploaded audio file
+      parameters:
+        - in: header
+          name: Idempotency-Key
+          required: true
+          schema: { type: string, maxLength: 200 }
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              required: [file]
+              properties:
+                file: { type: string, format: binary }
+                voice: { type: string, default: en }
+                aspect_ratios: { type: string, example: '16:9,9:16' }
+                style: { type: string }
+                avoid: { type: string, description: Comma-separated avoid terms }
+                burn_in: { type: boolean, default: true }
+                srt: { type: boolean, default: true }
+      responses:
+        '202': { description: Job queued }
+        '400': { description: Invalid upload or missing idempotency key }
+        '413': { description: File too large }
+  /api/v1/jobs/{job_id}:
+    get:
+      summary: Get job status and result links
+      parameters:
+        - in: path
+          name: job_id
+          required: true
+          schema: { type: string }
+      responses:
+        '200': { description: Job status }
+        '404': { description: Job not found }
+  /api/v1/jobs:
+    get:
+      summary: List recent jobs
+      parameters:
+        - in: query
+          name: limit
+          schema: { type: integer, minimum: 1, maximum: 100, default: 20 }
+      responses:
+        '200': { description: Recent jobs }

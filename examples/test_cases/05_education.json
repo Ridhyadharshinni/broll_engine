@@ -1,0 +1,17 @@
+{
+  "script": "Students learn online with digital lessons. Practice and feedback help them improve.",
+  "voice": "en",
+  "aspect_ratios": [
+    "16:9",
+    "9:16"
+  ],
+  "style": "calm, modern, respectful footage",
+  "avoid": [
+    "realistic faces",
+    "invented logos"
+  ],
+  "captions": {
+    "burn_in": false,
+    "srt": true
+  }
+}
